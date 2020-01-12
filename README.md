@@ -9,8 +9,12 @@ Put this into the preamble of your `.tex` file:
 
 ```
 \usepackage{tabularx}
+
 \usepackage{caption}
 \captionsetup{labelformat=empty}
+
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
 
 \newcommand{\code}[1]{\texttt{#1}}
 ```
