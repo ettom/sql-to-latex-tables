@@ -69,7 +69,7 @@ def create_latex_table(table):
     top = R"\begin{table}[H]"
     caption_label = f"\\caption{{Tabel: \\code{{{table.name_escaped}}}}}\n\\label{{tab:{table.name}}}"
     header = R"""
-\begin{tabularx}{\textwidth}{|l|l|l|X|}
+\begin{tabularx}{\textwidth}{|l|l|l|>{\raggedright\arraybackslash}X|}
 \hline
 \textbf{Veeru nimi} & \textbf{Tüüp} & \textbf{NULL?} & \textbf{Semantika} \\ \hline"""
 
@@ -83,6 +83,10 @@ def create_latex_table(table):
             row.append(create_primary_key_comment(table))
         elif "_ID" in field.name:
             row.append(create_foreign_key_comment(table, field.name_escaped))
+        elif field.name == "alates":
+            row.append("Kirje avamise kuupäev.")
+        elif field.name == "kuni":
+            row.append("Kirje sulgemise kuupäev.")
         else:
             row.append("semantika siia")
 
